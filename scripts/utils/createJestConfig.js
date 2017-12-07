@@ -27,8 +27,10 @@ module.exports = (resolve, rootDir, isEjecting) => {
     setupFiles: [resolve('config/polyfills.js')],
     setupTestFrameworkScriptFile: setupTestsFile,
     testMatch: [
-      '<rootDir>/src/**/__tests__/**/*.js?(x)',
-      '<rootDir>/src/**/?(*.)(spec|test).js?(x)',
+      // switch from src folder to root directory
+      // according to this pull request https://github.com/facebookincubator/create-react-app/pull/1808/files
+      '<rootDir>/!(build|docs|node_modules|scripts)/**/__tests__/**/*.js?(x)',
+      '<rootDir>/!(build|docs|node_modules|scripts)/**/?(*.)(spec|test).js?(x)',
     ],
     testEnvironment: 'node',
     testURL: 'http://localhost',
